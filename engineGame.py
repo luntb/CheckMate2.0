@@ -50,22 +50,3 @@ async def main():
 
 asyncio.set_event_loop_policy(chess.engine.EventLoopPolicy())
 asyncio.run(main())
-
-get move from user
-	feed to engine
-	create start and end position object for the move
-	if castle:
-		robot.castle - 1 for rb1, 2 for rb2
-	else:
-		robot.move
-get move from engine
-	create start and end position object for the move
-		if castle:
-			robot.castle - 1 for rb1, 2 for rb2
-		else:
-			robot.move
-
-robot.clearRobotPieces()
-robot2.clearRobotPieces()
-robot.resetToOriginalPosition()
-robot2.resetToOriginalPosition()
