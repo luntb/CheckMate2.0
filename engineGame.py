@@ -40,7 +40,7 @@ async def main():
         robot_move = convertMoveFromEngineToRobot(move)
         start = Position(robot_move[0], robot_move[1])
         end = Position(robot_move[2], robot_move[3])
-        print(result.move)
+        console.log(result.move)
 
     await engine.quit()
     robot.clearRobotPieces()
