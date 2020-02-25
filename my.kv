@@ -1,3 +1,5 @@
+#:import threading threading
+
 WindowManager:
     MainWindow:
     PlayChessWindow:
@@ -24,23 +26,22 @@ WindowManager:
             source:'GUIPics/Power.png' 
             size_hint: 0.15, 0.15 
             pos_hint: {"x": 0.58, 'y':0.55}
-            on_release:
+            on_touch_up:
                 app.root.current = "shutdown"
                 root.manager.transition.direction = "left"            
         ImageButton:  
             source:'GUIPics/WatchChess.png'  
             pos_hint: {"x": 0.58, 'y':0.25}
             size_hint: 0.15, 0.15
-            on_release:
+            on_touch_up:
                 app.root.current = "watchchess"
                 root.manager.transition.direction = "left"
-                root.start_game()
         
         ImageButton:  
             source:'GUIPics/DemoMode.png'  
             pos_hint: {"x": 0.25, 'y':0.25}
             size_hint: 0.15, 0.15
-            on_release:
+            on_touch_up:
                 app.root.current = "demoscreen"
                 root.manager.transition.direction = "left"
 <PlayChessWindow>:
@@ -55,7 +56,7 @@ WindowManager:
             source:'GUIPics/BackArrow.png'
             pos_hint: {"x": 0.90, 'y':0.87}
             size_hint: 0.10, 0.10
-            on_release:
+            on_touch_up:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
 <WatchChessWindow>:
@@ -70,12 +71,29 @@ WindowManager:
             source:'GUIPics/BackArrow.png'
             pos_hint: {"x": 0.90, 'y':0.87}
             size_hint: 0.10, 0.10
-            on_release:
-                root.end_game()
+            on_touch_up:
+                root.stop_game()
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
+        ImageButton:  
+            source:'GUIPics/PlayChess.png'
+            size_hint: 0.15, 0.15  
+            pos_hint: {"x": 0.25, 'y':0.65}
+            on_touch_up:
+                root.stop_game()
+                app.root.current = "main"
+                root.manager.transition.direction = "left"
+        ImageButton:  
+            source:'GUIPics/Power.png' 
+            size_hint: 0.15, 0.15 
+            pos_hint: {"x": 0.58, 'y':0.65}
+            on_touch_up:
+                root.reset_game()
+                app.root.current = "main"
+                root.manager.transition.direction = "left"
 <DemoWindow>:
     name: "demoscreen"
+    on_start:
     FloatLayout:
         canvas.before:
             Rectangle:
@@ -86,7 +104,7 @@ WindowManager:
             source:'GUIPics/BackArrow.png'
             pos_hint: {"x": 0.90, 'y':0.87}
             size_hint: 0.10, 0.10
-            on_release:
+            on_touch_up:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
 <ShutDown>:
@@ -101,6 +119,6 @@ WindowManager:
             source:'GUIPics/BackArrow.png'
             pos_hint: {"x": 0.90, 'y':0.87}
             size_hint: 0.10, 0.10
-            on_release:
+            on_touch_up:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
