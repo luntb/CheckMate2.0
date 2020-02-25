@@ -89,6 +89,7 @@ def playGame(game, robot, robot2):
         if stopGame is True:
             print('stopping')
             return
+        print(resetGame)
         turn += 1
         logging.debug("Turn:%d" % turn)
         if rb1Move is not None:
@@ -136,6 +137,7 @@ def pauseGame():
 ## initialize the robots and board used for the game
 #  @return Robot1, Robot2
 def setupRobots():
+    print('setup robots start')
     retry_autostart = conf.I('game', 'retry_autostart')
     autostart = False
     if conf.S('game', 'autostart') == 'True':
@@ -145,6 +147,7 @@ def setupRobots():
     gameBoard = Board()
     captureBoard1 = CaptureBoard()
     captureBoard2 = CaptureBoard()
+    print('boards reset')
     # Setup Robots
     RL = RobotList(2)
     robotList = None
@@ -191,25 +194,62 @@ def setupRobots():
         logging.error("Unable to identify robot 1!")
     if robot2.checkID(robot2ID):
         logging.error("Unable to identify robot 2!")
+    print('reset robots end')
     return robot, robot2
 
+
 def stop_game():
+    print('stopping the game I really mean it')
     global stopGame
     stopGame = True
-
+    return
 
 def reset_game():
+    print('resetting the game I really mean it')
     global resetGame
     resetGame = True
+    return
 
 robot, robot2 = setupRobots()
 
 def reset_robots():
+    # Both boards should just be in the same class.
+    gameBoard = Board()
+    captureBoard1 = CaptureBoard()
+    captureBoard2 = CaptureBoard()
+    RL = RobotList(2)
+    robotList = RL.getList()
+    robot = Robot(robotList[0], gameBoard, captureBoard1, ROBOT_1_COLOR)
+    robot2 = Robot(robotList[1], gameBoard, captureBoard2, ROBOT_2_COLOR)
+    # Check to verify the robots are not switched
+    robot1ID = conf.S('robotIdents', 'robot1')
+    logging.debug("Robot1 %s" % robot1ID)
+    robot2ID = conf.S('robotIdents', 'robot2')
+    logging.debug("Robot2 %s" % robot2ID)
+    # Switch the robots if they look incorrect
+    if not robot.checkID(robot1ID):
+        logging.debug("switching robots")
+        tmpRobot = robot2
+        robot2 = robot
+        robot = tmpRobot
+        # reset color so they are correct
+        robot.setColor(ROBOT_1_COLOR)
+        robot2.setColor(ROBOT_2_COLOR)
+
+    # Sanity check to make sure they match up after switch
+    if robot.checkID(robot1ID):
+        logging.error("Unable to identify robot 1!")
+    if robot2.checkID(robot2ID):
+        logging.error("Unable to identify robot 2!")
+    print('reset robots end')
+    return robot, robot2
+
+def new_robots():
     global robot
     global robot2
-    robot, robot2 = setupRobots()
-
-
+    robot, robot2 = reset_robots()
+    
+    
 ## setup the robots without connection the API to test without the robots
 #  @return Robot1, Robot2
 def testRobotSetup():
@@ -242,6 +282,7 @@ def setup_game():
     # Loop this forever
     for game in gameFiles:
         if stopGame is True or resetGame is True:
+            print('returning from gamefile loop')
             return
         playGame(game, robot, robot2)
         if not loopForever:
@@ -249,6 +290,8 @@ def setup_game():
     reset_robots()
     stopGame = False
     resetGame = False
+    print('leaving set up game')
+    return
 
 def main():
     # Setup board and capture board to share between robots

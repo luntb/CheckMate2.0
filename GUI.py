@@ -15,6 +15,7 @@ from threading import Thread
 
 print("kivy")
 run.main()
+# t = Thread(target=run.setup_game)
 
 
 class MainWindow(Screen):
@@ -27,13 +28,18 @@ class PlayChessWindow(Screen):
 
 
 class WatchChessWindow(Screen):
+    
     def on_enter(self):
+        global t
         print('start game')
-        t = Thread(target=run.setup_game).start()
+        t.start()
    
     def stop_game(self):
         print('ending game')
         run.stop_game()
+        global t
+        print(t.is_alive())
+        
     
     def reset_game(self):
         print('resetting game')
