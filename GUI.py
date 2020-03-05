@@ -11,6 +11,10 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 
 import run
 import os
+import sys
+sys.path.insert(0, '/home/pi/Documents/CheckMate2.0/chessgamesimple')
+from chessgamesimple import ChessBoardGUI
+#from chessgamesimple import chess
 
 print("kivy")
 run.main()
