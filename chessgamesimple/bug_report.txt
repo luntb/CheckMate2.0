@@ -1,0 +1,233 @@
+----- 02/27/20 20:30:40 -----
+Traceback (most recent call last):
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/gui.py", line 174, in play_as
+    game = make_AI_move(game, color)
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/gui.py", line 148, in make_AI_move
+    new_game = chess.make_move(game, chess.get_AI_move(game, AI_SEARCH_DEPTH))
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 1344, in get_AI_move
+    move = alpha_beta(game, game.to_move, depth)[0]
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 1227, in alpha_beta
+    [_, score] = alpha_beta(new_game, opposing_color(color), depth-1, alpha, beta)
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 1213, in alpha_beta
+    [simple_move, simple_evaluation] = evaluated_move(game, color)
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 1161, in evaluated_move
+    for move in legal_moves(game, color):
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 1089, in legal_moves
+    if is_legal_move(game, move):
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 1094, in is_legal_move
+    return not is_check(new_game.board, game.to_move)
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 927, in is_check
+    return is_attacked(get_king(board, color), board, opposing_color(color))
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 924, in is_attacked
+    return count_attacks(target, board, attacking_color) > 0
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 973, in count_attacks
+    if get_attacks(pos, board, attacking_color) & target:
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 941, in get_attacks
+    return queen_attacks(moving_piece, board, color)
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 905, in queen_attacks
+    return bishop_attacks(moving_piece, board, color) | rook_attacks(moving_piece, board, color)
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 890, in rook_attacks
+    atks |= rank_attacks(single_piece, board, color) | file_attacks(single_piece, board, color)
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 868, in rank_attacks
+    return east_attacks(single_piece, board, color) | west_attacks(single_piece, board, color)
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 856, in east_attacks
+    return east_ray(single_piece) ^ east_ray(blocker)
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 830, in east_ray
+    ray_atks = east_one(moving_piece)
+  File "/home/pi/Documents/SimpleChessGUI/SimpleChess_GamePYTHON/chess game simple/chess.py", line 419, in east_one
+    return (bitboard << 1) & nnot(FILE_A)
+KeyboardInterrupt
+
+Playing as BLACK:
+	d2d4 c7c6 e2e4 b7b5 g1f3 g8f6
+	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+	rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 1
+	rnbqkbnr/pp1ppppp/2p5/8/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2
+	rnbqkbnr/pp1ppppp/2p5/8/3PP3/8/PPP2PPP/RNBQKBNR b KQkq e3 0 2
+	rnbqkbnr/p2ppppp/2p5/1p6/3PP3/8/PPP2PPP/RNBQKBNR w KQkq b6 0 3
+	rnbqkbnr/p2ppppp/2p5/1p6/3PP3/5N2/PPP2PPP/RNBQKB1R b KQkq - 1 3
+	rnbqkb1r/p2ppppp/2p2n2/1p6/3PP3/5N2/PPP2PPP/RNBQKB1R w KQkq - 2 4
+-----------------------------
+
+----- 03/04/20 19:13:55 -----
+Traceback (most recent call last):
+  File "ChessBoardGUI.py", line 174, in play_as
+    game = make_AI_move(game, color)
+  File "ChessBoardGUI.py", line 148, in make_AI_move
+    new_game = chess.make_move(game, chess.get_AI_move(game, AI_SEARCH_DEPTH))
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 1344, in get_AI_move
+    move = alpha_beta(game, game.to_move, depth)[0]
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 1255, in alpha_beta
+    [_, score] = alpha_beta(new_game, opposing_color(color), depth-1, alpha, beta)
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 1213, in alpha_beta
+    [simple_move, simple_evaluation] = evaluated_move(game, color)
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 1162, in evaluated_move
+    evaluation = evaluate_game(make_move(game, move))
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 992, in evaluate_game
+    if game_ended(game):
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 1150, in game_ended
+    is_stalemate(game) or \
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 1103, in is_stalemate
+    for _ in legal_moves(game, game.to_move):
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 1089, in legal_moves
+    if is_legal_move(game, move):
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 1094, in is_legal_move
+    return not is_check(new_game.board, game.to_move)
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 927, in is_check
+    return is_attacked(get_king(board, color), board, opposing_color(color))
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 924, in is_attacked
+    return count_attacks(target, board, attacking_color) > 0
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 973, in count_attacks
+    if get_attacks(pos, board, attacking_color) & target:
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 933, in get_attacks
+    return pawn_attacks(moving_piece, board, color)
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 567, in pawn_attacks
+    return pawn_east_attacks(attacking_piece, board, color) | pawn_west_attacks(attacking_piece, board, color)
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 583, in pawn_east_attacks
+    return NE_one(attacking_piece & get_colored_pieces(board, color))
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 431, in NE_one
+    return north_one(east_one(bitboard))
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 425, in north_one
+    return (bitboard << 8) & nnot(RANK_1)
+  File "/home/pi/Documents/CheckMate2.0/chess game simple/chess.py", line 399, in nnot
+    return ~bitboard & ALL_SQUARES
+KeyboardInterrupt
+
+Playing as WHITE:
+	h2h4 d7d5 b1c3
+	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+	rnbqkbnr/pppppppp/8/8/7P/8/PPPPPPP1/RNBQKBNR b KQkq h3 0 1
+	rnbqkbnr/ppp1pppp/8/3p4/7P/8/PPPPPPP1/RNBQKBNR w KQkq d6 0 2
+	rnbqkbnr/ppp1pppp/8/3p4/7P/2N5/PPPPPPP1/R1BQKBNR b KQkq - 1 2
+-----------------------------
+
+----- 03/04/20 19:53:10 -----
+Traceback (most recent call last):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 177, in play_as
+    game = make_AI_move(game, color)
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 151, in make_AI_move
+    new_game = chess.make_move(game, chess.get_AI_move(game, AI_SEARCH_DEPTH))
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/chess.py", line 1340, in get_AI_move
+    if find_in_book(game):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/chess.py", line 1426, in find_in_book
+    book_file = open("book.txt")
+FileNotFoundError: [Errno 2] No such file or directory: 'book.txt'
+
+Playing as BLACK:
+	
+	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+-----------------------------
+
+----- 03/04/20 19:57:35 -----
+Traceback (most recent call last):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 177, in play_as
+    game = make_AI_move(game, color)
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 151, in make_AI_move
+    new_game = chess.make_move(game, chess.get_AI_move(game, AI_SEARCH_DEPTH))
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/chess.py", line 1340, in get_AI_move
+    if find_in_book(game):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/chess.py", line 1426, in find_in_book
+    book_file = open("book.txt")
+FileNotFoundError: [Errno 2] No such file or directory: 'book.txt'
+
+Playing as WHITE:
+	f2f4
+	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+	rnbqkbnr/pppppppp/8/8/5P2/8/PPPPP1PP/RNBQKBNR b KQkq f3 0 1
+-----------------------------
+
+----- 03/05/20 18:57:18 -----
+Traceback (most recent call last):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 179, in play_as
+    game = make_AI_move(game, color)
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 153, in make_AI_move
+    new_game = chess.make_move(game, chess.get_AI_move(game, AI_SEARCH_DEPTH))
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/chess.py", line 1340, in get_AI_move
+    if find_in_book(game):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/chess.py", line 1426, in find_in_book
+    book_file = open("book.txt")
+FileNotFoundError: [Errno 2] No such file or directory: 'book.txt'
+
+Playing as BLACK:
+	
+	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+-----------------------------
+
+----- 03/05/20 19:40:39 -----
+Traceback (most recent call last):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 171, in play_as
+    CLOCK.tick(CLOCK_TICK)
+NameError: name 'CLOCK' is not defined
+
+Playing as WHITE:
+	
+	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+-----------------------------
+
+----- 03/05/20 19:41:44 -----
+Traceback (most recent call last):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 171, in play_as
+    CLOCK.tick(CLOCK_TICK)
+NameError: name 'CLOCK' is not defined
+
+Playing as BLACK:
+	
+	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+-----------------------------
+
+----- 03/05/20 19:45:24 -----
+Traceback (most recent call last):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 171, in play_as
+    CLOCK.tick(CLOCK_TICK)
+NameError: name 'CLOCK' is not defined
+
+Playing as BLACK:
+	
+	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+-----------------------------
+
+----- 03/05/20 19:49:27 -----
+Traceback (most recent call last):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 196, in play_as
+    move = (chess.str2bb(leaving_square), chess.str2bb(arriving_square))
+UnboundLocalError: local variable 'leaving_square' referenced before assignment
+
+Playing as BLACK:
+	d2d4
+	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+	rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 1
+-----------------------------
+
+----- 03/05/20 20:00:28 -----
+Traceback (most recent call last):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 179, in play_as
+    game = make_AI_move(game, color)
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 154, in make_AI_move
+    set_title(SCREEN_TITLE)
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 149, in set_title
+    pygame.display.flip()
+pygame.error: video system not initialized
+
+Playing as BLACK:
+	d2d4 e7e6 c2c4 a7a6
+	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+	rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 1
+	rnbqkbnr/pppp1ppp/4p3/8/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2
+	rnbqkbnr/pppp1ppp/4p3/8/2PP4/8/PP2PPPP/RNBQKBNR b KQkq c3 0 2
+	rnbqkbnr/1ppp1ppp/p3p3/8/2PP4/8/PP2PPPP/RNBQKBNR w KQkq - 0 3
+-----------------------------
+
+----- 03/05/20 20:01:53 -----
+Traceback (most recent call last):
+  File "/home/pi/Documents/CheckMate2.0/chessgamesimple/ChessBoardGUI.py", line 185, in play_as
+    for event in pygame.event.get():
+pygame.error: video system not initialized
+
+Playing as BLACK:
+	e2e4 g8f6 e4e5
+	rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+	rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1
+	rnbqkb1r/pppppppp/5n2/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 1 2
+	rnbqkb1r/pppppppp/5n2/4P3/8/8/PPPP1PPP/RNBQKBNR b KQkq - 0 2
+-----------------------------
+
