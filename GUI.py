@@ -14,6 +14,8 @@ import os
 from threading import Thread
 import sys
 sys.path.insert(0, '/home/pi/Documents/CheckMate2.0/chessgamesimple')
+
+
 from chessgamesimple import ChessBoardGUI
 ##from chessgamesimple import chess
 
@@ -31,9 +33,8 @@ class MainWindow(Screen):
 
 class PlayChessWindow(Screen):
     def on_enter(self):
-        print('start game')
-        x = Thread(target=ChessBoardGUI.The_Game_GUI)
-        x.start()
+        ChessBoardGUI.The_Game_GUI()
+ 
         
     def quit_the_game(self):
         ChessBoardGUI.quit_the_game()
