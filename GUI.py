@@ -12,11 +12,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 import run
 import os
 from threading import Thread
-import sys
-sys.path.insert(0, '/home/pi/Documents/CheckMate2.0/kivychessmaster')
 
-
-from kivychessmaster import ChessBoardGUI
+import ChessBoardGUI
 print("kivy")
 run.main()
 
