@@ -24,11 +24,13 @@ from functools import partial
 import threading
 import os
 import string
+import sys
+sys.path.insert(0, '/home/pi/Documents/CheckMate2.0/kivychessmaster')
 
 board = chess.Board()
 engine = chess.uci.popen_engine("/usr/games/stockfish")
 
-data_dir = 'data/'
+data_dir = '/home/pi/Documents/CheckMate2.0/kivychessmaster/data/'
 image_dir = data_dir + 'images/'
 cp_images = image_dir + 'chess-pieces/'
 other_images = image_dir + 'other/'
@@ -92,14 +94,16 @@ class Chessboard(GridLayout):
 
     def button_down(self, id, *args):
         ids = {child.id: child for child in self.children}
-
-        background_down = 'atlas://data/images/defaulttheme/button_pressed'
+        
+        background_down = 'atlas://home/pi/Documents/CheckMate2.0/kivychessmaster/data/images/defaulttheme/button_pressed'
+        #background_down = 'atlas://data/images/defaulttheme/button_pressed'
         ids[id].background_normal =  background_down
 
     def button_up(self, id, *args):
         ids = {child.id: child for child in self.children}
-
-        background_normal = 'atlas://data/images/defaulttheme/button'
+    
+        background_normal = 'atlas://home/pi/Documents/CheckMate2.0/kivychessmaster/data/images/defaulttheme/button'
+        #background_normal = 'atlas://data/images/defaulttheme/button'
         ids[id].background_normal =  background_normal
         
     def press_button(self, id, *args, is_engine_move=False, engine_move=''):
@@ -363,7 +367,7 @@ class ChessGame(BoxLayout):
 
         return False
 
-Builder.load_file("Chessboard.kv")
+Builder.load_file("/home/pi/Documents/CheckMate2.0/kivychessmaster/Chessboard.kv")
 
 class ChessboardApp(App):
     def build(self):
@@ -379,5 +383,5 @@ class ChessboardApp(App):
         Config.write()
         return game
 
-if __name__ == '__main__':
-   ChessboardApp().run()
+#if __name__ == '__main__':
+   #ChessboardApp().run()
