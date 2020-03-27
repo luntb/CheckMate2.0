@@ -50,26 +50,83 @@ WindowManager:
                 root.manager.transition.direction = "left"
 <PlayChessWindow>:
     name: "playchess"
-    FloatLayout:
-        canvas.before:
-            Rectangle:
-                pos: self.pos
-                size: self.size
-                source: 'GUIPics/background.png'
-        Label:
-            font_size: 20
-			size_hint: 0.5, 0.10
-            pos_hint: {"x": 0.18, 'y':0.8805}
-            text_size: self.width, None
-            color: (1, 1, 1, .8)
-            text: 'Play a Chess Game'
-        ImageButton:
-            source:'GUIPics/BackArrow.png'
-            pos_hint: {"x": 0.90, 'y':0.87}
-            size_hint: 0.10, 0.10
-            on_release:
-                app.root.current = "main"
-                root.manager.transition.direction = "right"
+    <ChessCell>:
+        set_hint: None, None
+        on_release: self.parent.parent.parent.chesscell_clicked(self.id)
+        Image:
+            set_hint: None, None
+            allow_stretch: True
+            keep_ratio: False
+            y: self.parent.y - (self.parent.height - self.height)/2
+            x: self.parent.x
+            height: self.parent.height 
+            width: self.parent.width
+
+    <Sidebar>:
+        orientation: 'vertical'
+        size_hint_x: .6
+    
+    <ChessClockDisplay>:
+        size_hint_x: .9
+        multiline: False
+        font_name: 'data/fonts/digital-7/digital-7'
+        font_size: 45
+        padding_y: (self.height - self.line_height) / 2
+        padding_x: 20
+        disabled: True
+    
+    <ChessClockButton>:
+        size_hint_x: 1
+        font_name: 'data/fonts/digital-7/digital-7'
+        font_size: 40
+       
+    
+    <BlackChessClock>:
+        ChessClockButton:
+            text: 'Black time:'
+        ChessClockDisplay:
+            id: black_display
+            text: self.parent.parent.parent.parent.black_time
+    
+    <WhiteChessClock>:
+        ChessClockButton:
+            text: 'White time:'
+        ChessClockDisplay:
+            id: white_display
+            text: self.parent.parent.parent.parent.white_time
+            
+    
+    <ChessClockContainer>:
+        orientation: 'vertical'
+        size_hint: 1, None
+        height: self.parent.height/4
+        pos_hint: {'top': 1, 'right': 1}
+    
+    <Movebox>:
+        size_hint: 1, None
+        pos_hint: {'right': 1, 'top': .75}
+        height: self.parent.height/3
+        TextInput:
+            disabled: True
+            text: self.parent.parent.parent.movebox_moves
+            font_name: 'data/fonts/digital-7/digital-7'
+            font_size: 25
+
+
+    <ChessGame>:
+        ChessboardCentered:
+            id: board_container
+            Chessboard:
+                id: board
+                rows: 8
+                columns:8
+    
+        Sidebar:
+            ChessClockContainer:
+                WhiteChessClock:
+                BlackChessClock:
+            Movebox:
+
 <WatchChessWindow>:
     name: "watchchess"
     FloatLayout:
