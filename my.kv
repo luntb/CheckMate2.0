@@ -114,42 +114,26 @@ WindowManager:
             on_release:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-        Button:
-            id: startButton
-			text:'Start a Game'
+        ImageButton:
+            source: 'GUIPics/StartChessGame.png'
 			size_hint:(.2, .20)
             pos_hint:{'x':.05, 'y':.40}
-            font_size: 30
-            halign: 'center'
-            visible: True
-            disabled: not self.visible
-            opacity: 1 if self.visible else 0
             on_release:
                 root.ids.facts_label.text = root.start_game()
                 startButton.visible = False
-		Button:
-			text:'Stop the Game'
+		ImageButton:
+            source: 'GUIPics/Stopbutton.png'
 			size_hint:(.2, .20)
-            pos_hint:{'x':.05, 'y':.50}
-            font_size: 30
-            halign: 'center'
-            visible: not startButton.visible
-            disabled: not self.visible
-            opacity: 1 if self.visible else 0
+            pos_hint:{'x':.05, 'y':.55}
             on_release:
                 root.stop_game()
                 # app.root.current = "main"
                 # root.manager.transition.direction = "left"
                 # startButton.visible = True
-        Button:
-			text:'Reset the \nBoard Pieces'
+        ImageButton:
+			source: 'GUIPics/ResetBoardPieces.png'
 			size_hint:(.2, .20)
 			pos_hint:{'x':.05, 'y':.25}
-            font_size: 30
-            halign: 'center'
-            visible: not startButton.visible
-            disabled: not self.visible
-            opacity: 1 if self.visible else 0
             on_release:
                 root.reset_game()
                 # app.root.current = "main"
@@ -198,8 +182,8 @@ WindowManager:
 			pos_hint: {'x':.25, 'y':.15}
 			GridLayout:
 				cols: 1
-				padding: 5
-				spacing: 20
+				padding: 0
+				spacing: 10
 				size_hint: (None, None)
 				size_hint_y:  None
 				width: 1000
@@ -208,13 +192,8 @@ WindowManager:
 					text:""
 					font_size: 15
 					size: (900, 80)
-				Label:
-					text: "Engineering Diagrams"
-					font_size: 20
-					size: (900, 80)
-					text_size: self.size
-					halign: 'left'
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Chess System Assembly"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -223,6 +202,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.70 * self.height
 					text: "Chess System Assembly Exploded"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -231,6 +211,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Acrylic Display"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -239,6 +220,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Cabinet Assembly Exploded"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -247,6 +229,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Acrylic Top"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -255,6 +238,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Acrylic Locking Sides"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -263,6 +247,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Acrylic Ends"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -271,6 +256,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Cabinet Top"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -279,6 +265,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Cabinet Bottom"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -287,6 +274,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Cabinet Side Board (Long)"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -295,6 +283,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Cabinet Side Board (Short)"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -303,6 +292,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Chessboard Design"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -311,6 +301,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Gripper Attachment"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -319,6 +310,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
+                    font_size: 0.75 * self.height
 					text: "Riser"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -401,34 +393,30 @@ WindowManager:
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
 				
-		Button:
-			text:'No'
-			font_size: 40
+		ImageButton:
+            source:'GUIPics/No.png'
 			size_hint:(.35, .20)
             pos_hint:{'x':.10, 'y':.40}
 			on_release:
                 root.activate_admin_mode()
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
-		Button:
-			text:'Yes (Safely)'
-			font_size: 36
+		ImageButton:
+            source:'GUIPics/YesSafely.png'
 			size_hint:(.35, .20)
             pos_hint:{'x':.55, 'y':.40}
 			on_release:
                 root.turn_off()
                 quit()
-        Button:
-			text:'Force Restart'
-			font_size: 36
+        ImageButton:
+            source:'GUIPics/ForceRestart.png'
 			size_hint:(.35, .20)
             pos_hint:{'x':.10, 'y':.15}
 			on_release:
                 root.reset_pi()
                 quit()
-		Button:
-			text:'Force Shutdown'
-			font_size: 36
+		ImageButton:
+            source:'GUIPics/ForceShutdown.png'
 			size_hint:(.35, .20)
             pos_hint:{'x':.55, 'y':.15}
 			on_release:
