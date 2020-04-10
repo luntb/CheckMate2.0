@@ -45,16 +45,16 @@ class PlayChessWindow(Screen):
 class WatchChessWindow(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
-        self.facts = "Press 'Start a Game' to begin watching a chess game!\n\nPlease be patient if ChessBot was just turned on and the button doesn't appear to be working yet.\n\nWait after pressing the button while the robots are being setup and moving into their intial position."
+        self.facts = "Press 'START A CHESS GAME' to begin watching a chess game!\n\nPlease be patient if ChessBot was just turned on and the button doesn't appear to be working yet.\n\nWait after pressing the button while the robots are being setup and are moving into their initial position."
 
     #def on_enter(self):
         #self.facts = self.start_game()
 
     def start_game(self):
+        print('start game') 
         q = queue.Queue()
         global gameStarted
         gameStarted = True;
-        print('start game')
         print('start game')
         t = Thread(target=run.setup_game, args=[q]).start()
         facts = q.get()

@@ -116,29 +116,39 @@ WindowManager:
                 root.manager.transition.direction = "right"
         ImageButton:
             source: 'GUIPics/StartChessGame.png'
+            id: startButton
 			size_hint:(.2, .20)
             pos_hint:{'x':.05, 'y':.40}
-            on_release:
+            visible: True
+            disabled: not self.visible
+            opacity: 1 if self.visible else 0
+            on_press:
                 root.ids.facts_label.text = root.start_game()
                 startButton.visible = False
 		ImageButton:
             source: 'GUIPics/Stopbutton.png'
 			size_hint:(.2, .20)
             pos_hint:{'x':.05, 'y':.55}
+            visible: not startButton.visible
+            disabled: not self.visible
+            opacity: 1 if self.visible else 0
             on_release:
                 root.stop_game()
                 # app.root.current = "main"
                 # root.manager.transition.direction = "left"
-                # startButton.visible = True
+                startButton.visible = True
         ImageButton:
 			source: 'GUIPics/ResetBoardPieces.png'
 			size_hint:(.2, .20)
 			pos_hint:{'x':.05, 'y':.25}
+            visible: not startButton.visible
+            disabled: not self.visible
+            opacity: 1 if self.visible else 0
             on_release:
                 root.reset_game()
                 # app.root.current = "main"
                 # root.manager.transition.direction = "left"
-                # startButton.visible = True
+                startButton.visible = True
 				
 				
 <DemoWindow>:
@@ -173,7 +183,7 @@ WindowManager:
             font_size: 20
 			text_size: self.width, None
             color: (1, 1, 1, .8)
-            text: 'View charts and diagrams that were involved in designing this project! First select a file and then you can zoom into the image using two fingers.'
+            text: 'View charts and diagrams that were involved in the design of this project! First select a file, and then you can zoom into the image using two fingers.'
 			
 		ScrollView:
 			do_scroll_x: False
@@ -192,8 +202,14 @@ WindowManager:
 					text:""
 					font_size: 15
 					size: (900, 80)
+                #Label:
+				#	text:"Engineering Diagrams"
+				#	font_size: 20
+				#	size: (900, 80)
+                #   text_size: self.size
+                #    halign: 'left'
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Chess System Assembly"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -202,7 +218,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.70 * self.height
+                    font_size: 35
 					text: "Chess System Assembly Exploded"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -211,7 +227,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Acrylic Display"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -220,7 +236,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Cabinet Assembly Exploded"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -229,7 +245,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Acrylic Top"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -238,7 +254,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Acrylic Locking Sides"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -247,7 +263,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Acrylic Ends"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -256,7 +272,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Cabinet Top"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -265,7 +281,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Cabinet Bottom"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -274,7 +290,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Cabinet Side Board (Long)"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -283,7 +299,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Cabinet Side Board (Short)"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -292,7 +308,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Chessboard Design"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -301,7 +317,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Gripper Attachment"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -310,7 +326,7 @@ WindowManager:
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
 				Button:
-                    font_size: 0.75 * self.height
+                    font_size: 35
 					text: "Riser"
 					size: (900, 80)
 					size_hint: (None, None)
@@ -395,38 +411,46 @@ WindowManager:
 				
 		ImageButton:
             source:'GUIPics/No.png'
-			size_hint:(.35, .20)
-            pos_hint:{'x':.10, 'y':.40}
+			size_hint:(.20, .20)
+            pos_hint:{'x':.60, 'y':.48}
 			on_release:
                 root.activate_admin_mode()
                 app.root.current = "main"
                 root.manager.transition.direction = "right"
 		ImageButton:
             source:'GUIPics/YesSafely.png'
-			size_hint:(.35, .20)
-            pos_hint:{'x':.55, 'y':.40}
+			size_hint:(.20, .20)
+            pos_hint:{'x':.20, 'y':.48}
 			on_release:
                 root.turn_off()
                 quit()
         ImageButton:
             source:'GUIPics/ForceRestart.png'
-			size_hint:(.35, .20)
-            pos_hint:{'x':.10, 'y':.15}
+			size_hint:(.20, .20)
+            pos_hint:{'x':.20, 'y':.22}
 			on_release:
                 root.reset_pi()
                 quit()
 		ImageButton:
             source:'GUIPics/ForceShutdown.png'
-			size_hint:(.35, .20)
-            pos_hint:{'x':.55, 'y':.15}
+			size_hint:(.20, .20)
+            pos_hint:{'x':.60, 'y':.22}
 			on_release:
                 root.force_off()
                 quit()
 		Label:
             font_size: 20
 			size_hint: 0.95, 0.30
-            pos_hint: {"x": 0.025, 'y':0.55}
+            pos_hint: {"x": 0.025, 'y':0.60}
             text_size: self.width, None
 			halign: 'center'
             color: (1, 1, 1, .8)
-            text: 'Are you sure you would like to shutdown?\n"Yes (Safely)" ensures the robot stops moving and it in the proper position to reset. This may take up to a minute to turn off.\n"Force Restart" and "Force Shutdown" immediately powers off the system (which can damage the robots if they are still moving).'
+            text: 'Are you sure you would like to shutdown?\n"YES (SAFELY)" ensures the robot stops moving and it in the proper position to reset. This may take up to a minute to turn off.'
+        Label:
+            font_size: 20
+			size_hint: 0.95, 0.30
+            pos_hint: {"x": 0.025, 'y':0.29}
+            text_size: self.width, None
+			halign: 'center'
+            color: (1, 1, 1, .8)
+            text: '"FORCE RESTART" and "FORCE SHUTDOWN" immediately powers off the system (which can damage the robots if they are still moving).'

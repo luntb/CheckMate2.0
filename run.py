@@ -108,6 +108,17 @@ def playGame(game, robot, robot2, q):
                 robot.castle(castle, 1)
             else:
                 robot.move(start, end)
+        if resetGame is True:
+            print('resetting')
+            break
+        if stopGame is True:
+            print('stopping')
+            if lowerPosistions is True:
+                # This will move the robot arms closer to the table to prepare them to crash!!!
+                print('lowering')
+                Robot.movDownQuit(robot)
+                Robot.movDownQuit(robot2)
+            return
         if rb2Move is not None:
             logging.debug("ROBOT2: Start[%d,%d] End[%d,%d] %s" % \
                           (rb2Move[0][0], rb2Move[0][1], rb2Move[1][0], rb2Move[1][1], robot2.color))
