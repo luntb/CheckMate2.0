@@ -1,10 +1,11 @@
 from kivy.config import Config
 # Uncomment this next line to force kivy to open fullscreen (when ready for production)
-# Config.set('graphics', 'fullscreen', 'auto')
+Config.set('graphics', 'fullscreen', 'auto')
 
 # These two lines are used to match the resolution of the touchscreen
-Config.set('graphics','width','1280')
-Config.set('graphics','height','800')
+
+#Config.set('graphics','width','1280')
+#Config.set('graphics','height','800')
 
 from kivy.app import App
 from kivy.lang import Builder
@@ -84,11 +85,11 @@ class DemoWindow(Screen):
 class PhotoWindow(Screen):
 	def on_enter(self):
 		#curdir = dirname(__file__) # Obtain the current directory
-		myFilePath = 'GUIPics\Diagrams\\' + DemoWindow.selectedFile + '.png' # The image we want to find (selected from a button)
+		myFilePath = 'GUIPics\Diagrams\\' + DemoWindow.selectedFile + ".png" # The image we want to find (selected from a button)
 		print(myFilePath)
 		fileFound = 0 # If the image was never found, some unknown error occurred
-		for filename in glob(join('GUIPics\Diagrams\\', '*')): # Compare the files in GUIPics/Diagrams/
-			#print(filename)
+		for filename in glob(join('GUIPics\Diagrams\/', '*')): # Compare the files in GUIPics/Diagrams/
+			print(filename)
 			try:
 				if(filename == myFilePath): # We found the image correlated with the selected button
 					fileFound = 1 # Do not show the error message
