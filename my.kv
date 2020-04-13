@@ -167,7 +167,7 @@ WindowManager:
             pos_hint: {"x": 0.18, 'y':0.8805}
             text_size: self.width, None
             color: (1, 1, 1, .8)
-            text: 'Diagrams and Code Examples'
+            text: 'Diagram Examples'
         ImageButton:
             source:'GUIPics/BackArrow.png'
             pos_hint: {"x": 0.90, 'y':0.87}
@@ -202,12 +202,16 @@ WindowManager:
 					text:""
 					font_size: 15
 					size: (900, 80)
-                #Label:
-				#	text:"Engineering Diagrams"
-				#	font_size: 20
-				#	size: (900, 80)
-                #   text_size: self.size
-                #    halign: 'left'
+				Label:
+					text:""
+					font_size: 15
+					size: (900, 80)
+                Label:
+					text:"Cabinet Diagrams"
+					font_size: 20
+					size: (900, 80)
+                    text_size: self.size
+                    halign: 'left'
 				Button:
                     font_size: 35
 					text: "Chess System Assembly"
@@ -334,7 +338,134 @@ WindowManager:
 						root.ChangeImage('Riser')
 						app.root.current = "photowindow"
 						root.manager.transition.direction = "left"
-
+				
+				
+				
+				
+				Label:
+					text:""
+					font_size: 15
+					size: (900, 80)
+				Label:
+					text:""
+					font_size: 15
+					size: (900, 80)
+				Label:
+					text:"Chess Piece Drawings"
+					font_size: 20
+					size: (900, 80)
+                    text_size: self.size
+                    halign: 'left'
+				Button:
+                    font_size: 35
+					text: "Inspiration for the Pieces"
+					size: (900, 80)
+					size_hint: (None, None)
+					on_release:
+						root.ChangeImage('Piece Inspiration')
+						app.root.current = "photowindow"
+						root.manager.transition.direction = "left"
+				Button:
+                    font_size: 35
+					text: "Rook"
+					size: (900, 80)
+					size_hint: (None, None)
+					on_release:
+						root.ChangeImage('Rook')
+						app.root.current = "photowindow"
+						root.manager.transition.direction = "left"
+				Button:
+                    font_size: 35
+					text: "Queen"
+					size: (900, 80)
+					size_hint: (None, None)
+					on_release:
+						root.ChangeImage('Queen')
+						app.root.current = "photowindow"
+						root.manager.transition.direction = "left"
+				Button:
+                    font_size: 35
+					text: "Pawn"
+					size: (900, 80)
+					size_hint: (None, None)
+					on_release:
+						root.ChangeImage('Pawn')
+						app.root.current = "photowindow"
+						root.manager.transition.direction = "left"
+				Button:
+                    font_size: 35
+					text: "Knight"
+					size: (900, 80)
+					size_hint: (None, None)
+					on_release:
+						root.ChangeImage('Knight')
+						app.root.current = "photowindow"
+						root.manager.transition.direction = "left"
+				Button:
+                    font_size: 35
+					text: "King"
+					size: (900, 80)
+					size_hint: (None, None)
+					on_release:
+						root.ChangeImage('King')
+						app.root.current = "photowindow"
+						root.manager.transition.direction = "left"
+				Button:
+                    font_size: 35
+					text: "Bishop"
+					size: (900, 80)
+					size_hint: (None, None)
+					on_release:
+						root.ChangeImage('Bishop')
+						app.root.current = "photowindow"
+						root.manager.transition.direction = "left"
+				Button:
+                    font_size: 35
+					text: "Vertical Gripper Adapter"
+					size: (900, 80)
+					size_hint: (None, None)
+					on_release:
+						root.ChangeImage('Vertical Gripper Adapter')
+						app.root.current = "photowindow"
+						root.manager.transition.direction = "left"
+				
+				
+				
+				
+				Label:
+					text:""
+					font_size: 15
+					size: (900, 80)
+				Label:
+					text:""
+					font_size: 15
+					size: (900, 80)
+                Label:
+					text:"Senior Capstone Posters"
+					font_size: 20
+					size: (900, 80)
+                    text_size: self.size
+                    halign: 'left'
+				Button:
+                    font_size: 35
+					text: "Project Poster 2017-18"
+					size: (900, 80)
+					size_hint: (None, None)
+					on_release:
+						root.ChangeImage('Poster 2018')
+						app.root.current = "photowindow"
+						root.manager.transition.direction = "left"
+				Button:
+                    font_size: 35
+					text: "Project Poster 2019-20"
+					size: (900, 80)
+					size_hint: (None, None)
+					on_release:
+						root.ChangeImage('Poster 2020')
+						app.root.current = "photowindow"
+						root.manager.transition.direction = "left"
+						
+						
 
 <PhotoWindow>:
 	name: "photowindow"
