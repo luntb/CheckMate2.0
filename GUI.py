@@ -69,7 +69,10 @@ class WatchChessWindow(Screen):
     def reset_game(self):
         print('resetting game')
         run.reset_game()
-
+	
+    def pi_reset(self):
+        print('restarting Pi')
+        os.system("sudo shutdown -r now")
     pass
 
 

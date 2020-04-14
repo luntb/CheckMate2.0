@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Run ChessBot
+Comment=This script operates the GUI
+Exec=/home/pi/Documents/CheckMate2.0/PiScripts/RUN.sh
+Terminal=false
+Type=Application

@@ -127,6 +127,7 @@ WindowManager:
                 startButton.visible = False
 		ImageButton:
             source: 'GUIPics/Stopbutton.png'
+            id: stopButton
 			size_hint:(.2, .20)
             pos_hint:{'x':.05, 'y':.55}
             visible: not startButton.visible
@@ -136,9 +137,14 @@ WindowManager:
                 root.stop_game()
                 # app.root.current = "main"
                 # root.manager.transition.direction = "left"
-                startButton.visible = True
+                self.visible = False
+                resetButton.visible = False
+                facts_label.text = "You must reset the unit to watch another game"
+                resetPiButton.visible = True
+                
         ImageButton:
 			source: 'GUIPics/ResetBoardPieces.png'
+            id: resetButton
 			size_hint:(.2, .20)
 			pos_hint:{'x':.05, 'y':.25}
             visible: not startButton.visible
@@ -148,8 +154,21 @@ WindowManager:
                 root.reset_game()
                 # app.root.current = "main"
                 # root.manager.transition.direction = "left"
-                startButton.visible = True
-				
+                self.visible = False
+                stopButton.visible = False
+                facts_label.text = "You must reset the unit to watch another game..."
+                resetPiButton.visible = True
+                
+        ImageButton:
+            source: 'GUIPics/ForceRestart.png'
+            id: resetPiButton
+			size_hint:(.2, .20)
+            pos_hint:{'x':.5, 'y':.13}
+            visible: False
+            disabled: not self.visible
+            opacity: 1 if self.visible else 0
+            on_press:
+                root.pi_reset()
 				
 <DemoWindow>:
     name: "demoscreen"
